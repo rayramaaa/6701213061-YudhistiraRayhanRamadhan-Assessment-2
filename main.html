@@ -51,25 +51,85 @@
     </style>
   </head>
   <body>
-    <form id="myForm">
-      <label for="artistName">Artist Name:</label>
-      <input type="text" name="artistName" id="artistName">
-      <span id="artistNameError" class="error"></span><br>
+    <div class="container">
+      <h2>Form Atribut</h2>
+      <form id="myForm">
+        <div class="form-group">
+          <label for="artistName">Artist Name:</label>
+          <input type="text" id="artistName" name="artistName">
+          
+        </div>
   
-      <label for="trackName">Track Name:</label>
-      <input type="text" name="trackName" id="trackName">
-      <span id="trackNameError" class="error"></span><br>
+        <div class="form-group">
+          <label for="trackName">Track Name:</label>
+          <input type="text" id="trackName" name="trackName">
+         
+        </div>
   
-      <label for="collectionName">Collection Name:</label>
-      <input type="text" name="collectionName" id="collectionName">
-      <span id="collectionNameError" class="error"></span><br>
+        <div class="form-group">
+          <label for="collectionName">Collection Name:</label>
+          <input type="text" id="collectionName" name="collectionName">
+        
+        </div>
   
-      <label for="previewUrl">Preview URL:</label>
-      <input type="text" name="previewUrl" id="previewUrl">
-      <span id="previewUrlError" class="error"></span><br>
+        <div class="form-group">
+          <label for="previewUrl">Preview URL:</label>
+          <input type="text" id="previewUrl" name="previewUrl">
+          
+        </div>
   
-      <input type="submit" value="Submit">
-    </form>
+        <div class="button-container">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  
+    
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      event.preventDefault();  
+   
+      document.getElementById('artistNameError').textContent = '';
+      document.getElementById('trackNameError').textContent = '';
+      document.getElementById('collectionNameError').textContent = '';
+      document.getElementById('previewUrlError').textContent = '';
+
+      
+      var artistName = document.getElementById('artistName').value;
+      var trackName = document.getElementById('trackName').value;
+      var collectionName = document.getElementById('collectionName').value;
+      var previewUrl = document.getElementById('previewUrl').value;
+
+      
+      var isValid = true;
+
+      if (artistName.trim() === '') {
+        document.getElementById('artistNameError').textContent = 'Artist Name is required';
+        isValid = false;
+      }
+
+      if (trackName.trim() === '') {
+        document.getElementById('trackNameError').textContent = 'Track Name is required';
+        isValid = false;
+      }
+
+      if (collectionName.trim() === '') {
+        document.getElementById('collectionNameError').textContent = 'Collection Name is required';
+        isValid = false;
+      }
+
+      if (previewUrl.trim() === '') {
+        document.getElementById('previewUrlError').textContent = 'Preview URL is required';
+        isValid = false;
+      }
+
+      
+      if (isValid) {
+        
+        console.log('Form submitted successfully');
+      }
+    });
+  </script>
   
     
   </body>
